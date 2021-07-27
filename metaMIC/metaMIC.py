@@ -644,7 +644,7 @@ def breakpoint_detect(options, data):
                                        "temp/read_breakpoint/read_breakpoint_per_base.txt")):
         f = os.path.join(options.output,
                                        "temp/read_breakpoint/read_breakpoint_per_base.txt")
-        sys.stderr.write(f"Error: Expected file '{f}' does not exist\n")
+        sys.stderr.write("Error: Expected file {} does not exist\n".format(f))
         sys.exit(1)
 
     read_breakpoint = pd.read_csv(os.path.join(options.output,
@@ -694,7 +694,7 @@ def breakpoint_detect(options, data):
     else:
         if not os.path.exists(os.path.join(options.output, 'metaMIC_contig_score.txt')):
             f = options.contig_score
-            sys.stderr.write(f"Error: Expected file '{f}' does not exist\n")
+            sys.stderr.write("Error: Expected file {} does not exist\n".format(f))
             sys.exit(1)
 
         contig_score = pd.read_csv(os.path.join(options.output, 'metaMIC_contig_score.txt'), sep="\t", index_col=0)
@@ -787,8 +787,7 @@ def validate_options(options):
     def expect_file(f):
         if f is not None:
             if not os.path.exists(f):
-                sys.stderr.write(
-                    f"Error: Expected file '{f}' does not exist\n")
+                sys.stderr.write("Error: Expected file {} does not exist\n".format(f))
                 sys.exit(1)
 
     def expect_mode(f):
@@ -813,13 +812,11 @@ def validate_options(options):
             bamindex(options)
         else:
             if options.read is None and (options.read1 is None or options.read2 is None):
-                sys.stderr.write(
-                    f"Error: Expected read1 and read2.\n")
+                sys.stderr.write("Error: Expected read1 and read2.\n")
                 sys.exit(1)
 
             if options.read and (options.read1 or options.read2):
-                sys.stderr.write(
-                    f"Input read1/read2 or smart pairing (ignoring #2 fasta/q).\n")
+                sys.stderr.write("Input read1/read2 or smart pairing (ignoring #2 fasta/q).\n")
                 sys.exit(1)
 
             if os.path.exists(os.path.join(options.output, "temp/sam/contig.filter.sort.bam")):
@@ -830,7 +827,7 @@ def validate_options(options):
 
         if not os.path.exists(options.bamfile):
             f = options.bamfile
-            sys.stderr.write(f"Error: Expected file '{f}' does not exist\n")
+            sys.stderr.write("Error: Expected file {} does not exist\n".format(f))
             sys.exit(1)
 
     if options.cmd == 'train':
@@ -840,7 +837,7 @@ def validate_options(options):
             sys.exit(1)
         elif not os.path.exists(options.label):
             f = options.label
-            sys.stderr.write(f"Error: Expected file '{f}' does not exist\n")
+            sys.stderr.write("Error: Expected file {} does not exist\n".format())
             sys.exit(1)
         if options.assembler in ["MEGAHIT", "IDBA_UD"]:
             sys.stderr.write(
