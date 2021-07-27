@@ -334,8 +334,7 @@ def download_model(path, MD5):
                 tar.extract(file_name, os.path.join(base_path, 'model'))
             tar.close()
         except Exception:
-            sys.stderr.write(
-                f"Error: cannot unzip the file.")
+            sys.stderr.write(f"Error: cannot unzip the file.")
             sys.exit(1)
         os.remove(download_path)
 
