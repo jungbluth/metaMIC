@@ -573,8 +573,7 @@ def predict(options, data):
     model_path = os.path.join(base_path, modelfilename)
     if not os.path.exists(model_path):
         f = model_path
-        sys.stderr.write(
-            f"Error: Expected training model '{f}' does not exist\n")
+        sys.stderr.write("Error: Expected training model '{f}' does not exist\n")
         sys.exit(1)
     score = pd.DataFrame(np.zeros([test_data.shape[0], 10]))
     score.index = test_data.index
