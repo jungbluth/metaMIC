@@ -419,7 +419,7 @@ def pileupfile_parse(args):
                                                "temp/contig/filtered_contigs.fa")):
                     args.assemblies = os.path.join(args.output, "temp/contig/filtered_contigs.fa")
                 else:
-                    sys.stderr.write(f"Error: Can not find assemblies:{args.assemblies}!\n")
+                    sys.stderr.write("Error: Can not find assemblies:{}!\n".format(args.assemblies))
                     sys.exit(1)
 
             os.makedirs(os.path.join(args.output, "temp/pileup"), exist_ok=True)

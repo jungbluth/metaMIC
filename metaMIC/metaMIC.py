@@ -334,8 +334,7 @@ def download_model(path, MD5):
                 tar.extract(file_name, os.path.join(base_path, 'model'))
             tar.close()
         except Exception:
-            sys.stderr.write(
-                f"Error: cannot unzip the file.")
+            sys.stderr.write("Error: cannot unzip the file.")
             sys.exit(1)
         os.remove(download_path)
 
@@ -346,15 +345,13 @@ def download_model(path, MD5):
                 open(os.path.join(os.path.join(base_path, 'model', os.path.split(path)[1].split('.')[0]),temp_gz[:-3]), "wb+").write(g_file.read())
                 g_file.close()
             except Exception:
-                sys.stderr.write(
-                    f"Error: cannot unzip the file.")
+                sys.stderr.write("Error: cannot unzip the file.")
                 sys.exit(1)
             os.remove(os.path.join(os.path.join(base_path, 'model', os.path.split(path)[1].split('.')[0]),temp_gz))
 
     else:
         os.remove(download_path)
-        sys.stderr.write(
-            f"Error: MD5 check failed, removing '{download_path}'.\n")
+        sys.stderr.write("Error: MD5 check failed, removing {}.\n".format(download_path))
         sys.exit(1)
 
 def download():
