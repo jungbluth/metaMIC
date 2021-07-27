@@ -551,7 +551,7 @@ def feature_exist(options):
 def check_feature(options):
     def check_path(f):
         if not os.path.exists(f):
-            sys.stderr.write(f"Error: Expected file '{f}' does not exist\n")
+            sys.stderr.write("Error: Expected file {} does not exist\n".format(f))
             sys.exit(1)
     check_path(os.path.join(options.output,
                             "temp/read_feature/read_feature.txt"))
